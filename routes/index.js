@@ -12,10 +12,9 @@ module.exports = router;
 router.get('/', function(req, res) {
      res.render('pages/home');
 });
+
+
 // Routes
-
-
-// route for our about page
 router.get('/about', function(req, res) {
      var users = [
      { name: 'Holly', email: 'holly@scotch.io', avatar: 'http://placekitten.com/300/300'},
