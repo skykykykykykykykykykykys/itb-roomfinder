@@ -13,12 +13,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAp9S6-Jxhp70uPhbuzplYY2pzKtA83bIk'
-    })
-    /* TODO: 
-    ,RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-      { path: 'products/:productId', component: ProductDetailsComponent }*/
+    }), 
+    RouterModule.forRoot([
+      { path: '', component: AppComponent },
+      /*
+      { path: '/search, components: SearchComponent'},
+      { path: 'search/:locationid, components: LocationDrawerComponent'}
+      */
+    ]),
   ],
-  providers: [],
+  declarations : [
+    AppComponent  
+  ],
+  bootstrap : [AppComponent]
 })
 export class AppModule {}
