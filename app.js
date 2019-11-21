@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // route our app
-var router = require('./routes/index');
+var router = require('./routes/router');
 app.use('/', router);
 
 
