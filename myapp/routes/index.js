@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let index = require('../controllers/dashboard');
+let dashboard = require('../controllers/dashboard');
 
 /* GET home page. */
 router.get('/', dashboard.get_dashboard);
