@@ -4,7 +4,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var dashboardRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var searchRouter = require('./routes/users');
+var navRouter = require('/router/nav')
 
 var app = express();
 
@@ -15,7 +16,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', dashboardRouter);
-app.use('/users', usersRouter);
+app.use('/search', searchRouter);
+app.use('/nav', navRouter)
 
 // Server Run
 const start = async () => {

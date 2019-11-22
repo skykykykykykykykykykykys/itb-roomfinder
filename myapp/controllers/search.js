@@ -14,7 +14,7 @@
           getDeskripsiGedung,
           getLokasiGedung, return latitude dan longitude
 */
-const db = require('../data/config.js');
+const db = require('../data/config');
 
 exports.getNamaRuang = (payload) => {
      return new Promise((resolve, reject) => {
