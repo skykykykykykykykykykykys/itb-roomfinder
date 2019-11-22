@@ -1,0 +1,11 @@
+extends layout
+
+block content
+     h1= title
+     p Berikut adalah posisi anda
+     script
+          include ../public/javascripts/script.js
+     p latitude: 
+          span#latitude &deg
+     p longitude: 
+          span#longitude &deg
