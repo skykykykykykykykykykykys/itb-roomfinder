@@ -1,17 +1,27 @@
-/*
-     Buat Navigation:
-          POST UserGPS
-          GET  LokasiRuang
-               LokasiGedung
-          Google Maps API Directions
-*/
-var search = require('./search');
+
+const db = require('../controllers/config');
 
 
-exports.apiKey = ''
+exports.getRuangID = (id) => { // aman
+     return new Promise((resolve, reject) => {
+         db.any('SELECT idRuangan, latitudeRuangan, longitudeRuangan FROM ruangan_type WHERE idRuangan = $1', [id])
+             .then(data => {
+                 resolve(data);
+             })
+             .catch(err => {
+                 reject(err);
+             })
+     })
+ }   
 
 
 exports.post_userGPS = function(req, res, next) {
      res.render('dashboard', { title: 'ITB Roomfinder' });
 };
+
+function haha() {
+     var idSmth = id;
+
+}
+
 
