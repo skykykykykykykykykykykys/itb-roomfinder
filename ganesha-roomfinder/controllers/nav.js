@@ -1,3 +1,18 @@
+const db = require('../controllers/config');
+
+
+exports.getRuangID = (id) => { // aman
+     return new Promise((resolve, reject) => {
+     db.any('SELECT idRuangan, latitudeRuangan, longitudeRuangan FROM ruangan_type WHERE idRuangan = $1', [id])
+          .then(data => {
+               resolve(data);
+          })
+          .catch(err => {
+               reject(err);
+          })
+     })
+}   
+
 exports.get_navigation = function(req, res, next) {
      res.render('navigation', { title: 'Navigation', que: req.query });
      console.log(req.query);
