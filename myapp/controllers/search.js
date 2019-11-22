@@ -33,26 +33,31 @@
                })
           })
 }
-*/
+
 
 const {Client} = require ("pg")
-const express = require ("express")
-const app = express();
+
 
 const client = new Client({
      "user" : "postgres",
      "password" : "990830",
      "host" : "potatooo",
-     "port" : "5432",
-     "database" : "ruangan"
+     "port" : 5432,
+     "database" : "Ruangan"
 })
 
 
 start()
 async function start() {
      await connect();
-     const ruangan = await readRuangan();
-     console.log(ruangan)
+     const bangunan = await readBangunan();
+     console.log(bangunan)
+
+     const successCreate = await createBangunan("bangunan :")
+     console.log('create success')
+
+     const successDelete = await deleteBangunan(1)
+     console.log('delete success')
 }
 
 async function connect() {
@@ -64,19 +69,19 @@ async function connect() {
      }
 }
 
-async function readRuangan() {
+async function readBangunan() {
      try {
-          const results = await client.query("select idRuangan, namaRuangan from ruangan_type");    
+          const results = await client.query("select idBangunan, namaBangunan from bangunan_type");    
           return  results.rows;
      } 
-          catch(e){
-               return[];
-          }
+     catch(e){
+          return[];
+     }
 }
 
-async function createRuangan(ruangantext) {
+async function createBangunan(bangunantext) {
      try {
-          await client.query("insert into ruangan_type (text) values ($1)", [ruangantext]);
+          await client.query("insert into bangunan_type (text) values ($1)", [bangunantext]);
           return true;
      }
      catch(e){
@@ -84,12 +89,28 @@ async function createRuangan(ruangantext) {
      }
 }
 
-async function deleteRuangan(idRuangan){
+async function deleteRuangan(idBangunan){
      try {
-          await client.query("delete from ruangan_type where idRuangan = $1", [idRuangan]);
+          await client.query("delete from bangunan_type where idBangunan = $1", [idBangunan]);
           return true
      }
      catch(e){
           return false;
      }
 }
+
+*/
+
+const {Pool, Client} = require('pg')
+const connectionString = 'postgresql://postgres:990830@localhost:5432/Ruangan'
+
+const client = new Client({
+     connectionString:connectionString
+})
+
+client.connect()
+
+client.query('SELECT * FROM ruangan_type',(err,res)=>{
+     console.log(err,res)
+     client.end()
+})
