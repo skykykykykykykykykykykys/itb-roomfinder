@@ -1,3 +1,4 @@
+
 const db = require('../controllers/config');
 
 
@@ -13,6 +14,7 @@ exports.getRuangID = (id) => { // aman
      })
  }   
 
+
 exports.post_userGPS = function(req, res, next) {
      res.render('dashboard', { title: 'ITB Roomfinder' });
 };
@@ -21,3 +23,5 @@ function haha() {
      var idSmth = id;
 
 }
+
+
